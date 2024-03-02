@@ -1,0 +1,17 @@
+.logo{
+    height: 30;
+    width: 130;
+    border-radius: 5;
+}
+
+.appbar{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.top-icon{
+    margin-left: 8px;
+    margin-right: 8px;
+}
