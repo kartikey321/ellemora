@@ -6,6 +6,7 @@ import {
   MdKeyboardArrowLeft as LeftArrow,
   MdKeyboardArrowRight as RightArrow,
 } from "react-icons/md";
+import ItemCard from "./components/itemCard";
 
 function Home() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -27,8 +28,7 @@ function Home() {
         flexDirection: "column",
         flex: 1,
         backgroundColor: "white",
-      }}
-    >
+      }}>
       <div
         style={{
           backgroundImage: `url(${BackgroundImage})`,
@@ -40,8 +40,7 @@ function Home() {
           display: "flex",
           justifyContent: "stretch",
           // Align items vertically in the container
-        }}
-      >
+        }}>
         <div
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.4)",
@@ -55,8 +54,7 @@ function Home() {
             display: "flex",
             justifyContent: "space-between",
             position: "absolute",
-          }}
-        ></div>
+          }}></div>
         <div
           style={{
             alignItems: "stretch",
@@ -67,8 +65,7 @@ function Home() {
             display: "flex",
             justifyContent: "space-between",
             position: "absolute",
-          }}
-        >
+          }}>
           <HomeAppBar />
           <div
             style={{
@@ -76,8 +73,7 @@ function Home() {
               flexDirection: "column",
               justifyContent: "flex-end",
               alignItems: "center",
-            }}
-          >
+            }}>
             <div className="style-text">TAILORED DESIGNING JUST FOR YOU.</div>
             <div className="button-box">
               <div className="text">Experience Ellemora</div>
@@ -102,8 +98,7 @@ function Home() {
             width: "92%",
             display: "flex",
             flexDirection: "row",
-          }}
-        >
+          }}>
           <div className="left-arrow">
             <LeftArrow size={16} color="#C2C2C2" />
           </div>
@@ -121,8 +116,7 @@ function Home() {
               "&::-webkit-scrollbar": {
                 display: "none" /* For WebKit browsers (Chrome, Safari) */,
               },
-            }}
-          >
+            }}>
             {filterList.map((e, index) => {
               return (
                 <div
@@ -132,14 +126,12 @@ function Home() {
                   }}
                   onClick={() => {
                     setSelectedOption(index);
-                  }}
-                >
+                  }}>
                   <div
                     className="filter-text"
                     style={{
                       color: selectedOption == index ? "white" : null,
-                    }}
-                  >
+                    }}>
                     {e}
                   </div>
                 </div>
@@ -153,6 +145,9 @@ function Home() {
       </div>
       <div style={{ justifyContent: "end", marginRight: "15px" }}>
         <div className="view_all">VIEW ALL</div>
+      </div>
+      <div style={{ justifyContent: "stretch" }}>
+        <ItemCard />
       </div>
     </div>
   );
