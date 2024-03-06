@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+.body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  background-color: rgba(255, 255, 255, 1);
+  width: "100%";
+}
+.color-pallete-box {
+  border-radius: 2.6px;
+  padding: 3.45px;
+  width: 15px;
+  height: 15px;
+  margin: 5px;
+  border: 0.43px solid #b8b8b8;
+}
+
+.color-pallete-layout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.color-pallete {
+  width: "100%";
+  height: "100%";
+}
+.item-title {
+  font-size: 15;
+  line-height: 22.5px;
+  color: black;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+.item-desc {
+  font-size: "8px";
+  line-height: 22.5px;
+  font-weight: 500;
+  color: black;
+  font-family: "Poppins", sans-serif;
+}
+.main-money {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 22.5px;
+  font-family: "Poppins", sans-serif;
+  color: rgb(0, 0, 1);
+}
+
+.sub-money {
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 22.5px;
+  text-decoration: line-through;
+  font-family: "Poppins", sans-serif;
+  color: rgba(128, 128, 128, 1);
+}
+
+.discount-box {
+  margin-left: 5px;
+  width: 46px;
+  height: 20px;
+  border: 0.5px solid #ffae81;
+  padding: 6px;
+  align-items: center;
+  justify-content: center;
+}
+
+.discount {
+  text-align: center;
+  color: #ffae81;
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.size-box,
+.share-box,
+.fav-box {
+  border-radius: 5px;
+  border: 1px solid #373737;
+  margin: 3px;
+  display: flex;
+  padding: 12px;
+  align-items: center;
+  justify-content: center;
+}
+
+.size-box {
+  flex: 5;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+.share-box,
+.fav-box {
+  flex: 1;
+}
+
+.add-to-cart {
+  margin-top: 10px;
+  padding: 15px;
+  flex: 1;
+  align-items: center;
+  background-color: #373737;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+}
+.cart-text {
+  font-size: 14;
+  color: white;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+}
+
+.divider {
+  flex: 1;
+  margin-top: 10px;
+  margin-bottom: 10px;
+
+  border: 1px solid #f1f1f1;
+}
+
+.desc-head {
+  font-size: 12px;
+  line-height: 18px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.bottom-content {
+  margin-left: 15px;
+  margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.desc-body {
+  font-size: 10px;
+  line-height: 15px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+
+.desc1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+}
