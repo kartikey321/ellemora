@@ -11,17 +11,22 @@ import HomeAppBar from "../Home/components/appbar";
 import item1Image from "../../../assets/images/item1.png";
 import item2Image from "../../../assets/images/item2.png";
 import fashionVideo from "../../../assets/videos/fashion_video.mp4";
-function ProductPage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedSize, setSelectedSize] = useState(null);
-  const toggleOpen = () => setIsOpen(!isOpen);
-  const media = [
-    { type: "image", src: item1Image },
+import { MediaItem } from "./components/carousel/render_media";
+import SizeBottomSheet from "./components/size_sheet";
 
-    { type: "image", src: item2Image },
-    { type: "image", src: item2Image },
-    { type: "video", src: fashionVideo },
+const ProductPage: React.FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectedSize, setSelectedSize] = useState<string | null>(null);
+
+  const toggleOpen = () => setIsOpen(!isOpen);
+
+  const media: MediaItem[] = [
+    { type: "image", url: item1Image },
+    { type: "image", url: item2Image },
+    { type: "image", url: item2Image },
+    { type: "video", url: fashionVideo },
   ];
+
   return (
     <div
       className="body"
@@ -33,6 +38,7 @@ function ProductPage() {
         overflowY: "scroll",
       }}
     >
+      <SizeBottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)} />
       <HomeAppBar />
       <Carousel media={media} />
       <div className="color-pallete-layout">
@@ -42,15 +48,13 @@ function ProductPage() {
           "rgba(80, 87, 0, 1)",
           "rgba(0, 87, 71, 1)",
           "rgba(87, 0, 0, 1)",
-        ].map((val, index) => {
-          return (
-            <div className="color-pallete-box">
-              <div
-                style={{ backgroundColor: val, height: "100%", width: "100%" }}
-              ></div>
-            </div>
-          );
-        })}
+        ].map((val, index) => (
+          <div className="color-pallete-box" key={index}>
+            <div
+              style={{ backgroundColor: val, height: "100%", width: "100%" }}
+            ></div>
+          </div>
+        ))}
       </div>
       <div
         style={{ marginTop: "8px", marginLeft: "16px", marginRight: "16px" }}
@@ -116,7 +120,12 @@ function ProductPage() {
         <div
           style={{ marginTop: "8px", display: "flex", flexDirection: "row" }}
         >
-          <div onClick={toggleOpen} className="size-box">
+          <div
+            onClick={() => {
+              setIsOpen(true);
+            }}
+            className="size-box"
+          >
             <div></div>
             <div>{"Size"}</div>
             <Dropdown size={28} color="black" />
@@ -191,6 +200,6 @@ function ProductPage() {
       </div>
     </div>
   );
-}
+};
 
 export default ProductPage;

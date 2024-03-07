@@ -1,21 +1,36 @@
-// Carousel.js
 import React, { useRef, useState, useEffect } from "react";
 import RenderMedia from "./render_media";
 import "./carousel.css";
-const Carousel = ({ media }) => {
-  const carouselRef = useRef();
-  const [currentIndex, setCurrentIndex] = useState(0);
+
+interface MediaItem {
+  // Define the type for media items
+  // Assuming media items have properties like url, type, etc.
+  url: string;
+  type: string;
+}
+
+interface Props {
+  media: MediaItem[];
+}
+
+const Carousel: React.FC<Props> = ({ media }) => {
+  const carouselRef = useRef<HTMLDivElement>(null); // Specify the type for carouselRef
+  const [currentIndex, setCurrentIndex] = useState<number>(0); // Specify the type for currentIndex
 
   const handleScroll = () => {
-    const scrollPosition = carouselRef.current.scrollLeft;
-    const index = Math.round(scrollPosition / window.innerWidth);
-    setCurrentIndex(index);
+    if (carouselRef.current) {
+      const scrollPosition = carouselRef.current.scrollLeft;
+      const index = Math.round(scrollPosition / window.innerWidth);
+      setCurrentIndex(index);
+    }
   };
 
   useEffect(() => {
     const carousel = carouselRef.current;
-    carousel.addEventListener("scroll", handleScroll);
-    return () => carousel.removeEventListener("scroll", handleScroll);
+    if (carousel) {
+      carousel.addEventListener("scroll", handleScroll);
+      return () => carousel.removeEventListener("scroll", handleScroll);
+    }
   }, []);
 
   return (

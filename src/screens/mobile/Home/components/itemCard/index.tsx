@@ -4,10 +4,10 @@ import { FormatINR } from "../../../../../helpers/Helpers";
 import { RiShoppingBagLine as ShoppingIcon } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import AppRoutes from "../../../../../helpers/routes";
-import { FaHeart as Heart } from "react-icons/fa";
-import { FaRegHeart } from "react-icons/fa";
+import { FaHeart as Heart, FaRegHeart } from "react-icons/fa";
+import { ItemCardProps } from "@/models/ItemCard";
 
-function ItemCard(props) {
+const ItemCard: React.FC<ItemCardProps> = (props) => {
   const [fav, setFav] = useState(false);
   const { id, name, image, price, discountedPrice } = props;
   const navigate = useNavigate();
@@ -18,7 +18,6 @@ function ItemCard(props) {
         console.log("navigate: ", AppRoutes.PRODUCT);
         navigate(AppRoutes.PRODUCT);
       }}
-      className="body"
     >
       <div
         style={{
@@ -91,6 +90,6 @@ function ItemCard(props) {
       </div>
     </div>
   );
-}
+};
 
 export default ItemCard;

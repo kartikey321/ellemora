@@ -1,22 +1,33 @@
-// RenderMedia.js
 import React, { useEffect, useState, useRef } from "react";
 import { FaPlay } from "react-icons/fa";
 import { IoPauseSharp } from "react-icons/io5";
 
-function RenderMedia({ mediaItem, selectedIndex, media, index }) {
-  const videoRef = useRef(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+export interface MediaItem {
+  url: string;
+  type: string;
+}
+
+interface Props {
+  mediaItem: MediaItem;
+  selectedIndex: number;
+  media: MediaItem[];
+  index: number;
+}
+
+const RenderMedia: React.FC<Props> = ({ mediaItem, selectedIndex, media, index }) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   useEffect(() => {
     const handleScroll = () => {
       if (index === selectedIndex && mediaItem.type === "video") {
-        const { top, bottom } = videoRef.current.getBoundingClientRect();
+        const { top, bottom } = videoRef.current?.getBoundingClientRect() ?? { top: 0, bottom: 0 };
         const isVisible = top < window.innerHeight && bottom >= 0;
         if (isVisible && !isPlaying) {
-          videoRef.current.play();
+          videoRef.current?.play();
           setIsPlaying(true);
         } else if (!isVisible && isPlaying) {
-          videoRef.current.pause();
+          videoRef.current?.pause();
           setIsPlaying(false);
         }
       }
@@ -31,12 +42,14 @@ function RenderMedia({ mediaItem, selectedIndex, media, index }) {
 
   const handleTogglePlay = () => {
     const videoElement = videoRef.current;
-    if (isPlaying) {
-      videoElement.pause();
-    } else {
-      videoElement.play();
+    if (videoElement) {
+      if (isPlaying) {
+        videoElement.pause();
+      } else {
+        videoElement.play();
+      }
+      setIsPlaying(!isPlaying);
     }
-    setIsPlaying(!isPlaying);
   };
 
   return (
@@ -44,7 +57,7 @@ function RenderMedia({ mediaItem, selectedIndex, media, index }) {
       {mediaItem.type === "image" && (
         <img
           style={{ objectFit: "cover", height: 600, width: "100%" }}
-          src={mediaItem.src}
+          src={mediaItem.url}
           alt="carousel"
         />
       )}
@@ -56,7 +69,7 @@ function RenderMedia({ mediaItem, selectedIndex, media, index }) {
             muted
             ref={videoRef}
             style={{ objectFit: "cover", height: 600, width: "100%" }}
-            src={mediaItem.src}
+            src={mediaItem.url}
             onClick={handleTogglePlay}
           />
           <button

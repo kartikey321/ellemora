@@ -24,7 +24,8 @@
   font-family: "Poppins", sans-serif; /* Specify the font family */
 }
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* For WebKit browsers (Chrome, Safari) */
+  -ms-overflow-style: none;
+  display: none;
 }
 .style-text {
   color: white;

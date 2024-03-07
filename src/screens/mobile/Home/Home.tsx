@@ -8,8 +8,22 @@ import {
   MdKeyboardArrowRight as RightArrow,
 } from "react-icons/md";
 import ItemCard from "./components/itemCard";
+import { ItemCardProps } from "@/models/ItemCard";
 
 function Home() {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
+  const [filterList, setFilterList] = useState<string[]>([
+    "Lehengas",
+    "Ready to wear sarees",
+    "Dresses",
+    "Lehengas1",
+    "Dresses1",
+    "Dresses2",
+    "Lehengas2",
+  ]);
+  const [selectedOption, setSelectedOption] = useState(-1);
+
   const storyItems = [
     {
       id: 0,
@@ -42,49 +56,38 @@ function Home() {
       image: require("../../../assets/images/item1.png"),
     },
   ];
-  const items = [
+
+  const items: ItemCardProps[] = [
     {
-      id: 0,
+      id: "0",
       name: "PINK CASCADE SET",
       image: require("../../../assets/images/item1.png"),
-      price: "15000",
-      discountedPrice: "10000",
+      price: 15000,
+      discountedPrice: 10000,
     },
     {
-      id: 1,
+      id: "1",
       name: "PINK CASCADE SET",
       image: require("../../../assets/images/item2.png"),
-      price: "15000",
-      discountedPrice: "10000",
+      price: 15000,
+      discountedPrice: 10000,
     },
     {
-      id: 2,
+      id: "2",
       name: "PINK CASCADE SET",
       image: require("../../../assets/images/item1.png"),
-      price: "15000",
-      discountedPrice: "10000",
+      price: 15000,
+      discountedPrice: 10000,
     },
     {
-      id: 3,
+      id: "3",
       name: "PINK CASCADE SET",
       image: require("../../../assets/images/item2.png"),
-      price: "15000",
-      discountedPrice: "10000",
+      price: 15000,
+      discountedPrice: 10000,
     },
   ];
-  //const [items, setItems] = useState(items1);
-  const [width, setWidth] = useState(window.innerWidth);
-  const [height, setHeight] = useState(window.innerHeight);
-  const [filterList, setFilterList] = useState([
-    "Lehengas",
-    "Ready to wear sarees",
-    "Dresses",
-    "Lehengas1",
-    "Dresses1",
-    "Dresses2",
-    "Lehengas2",
-  ]);
-  const [selectedOption, setSelectedOption] = useState(-1);
+
   return (
     <div
       style={{
@@ -194,8 +197,7 @@ function Home() {
       <div
         style={{
           width: "100%",
-          overflowX: "auto", // This will make the row scrollable horizontally
-          "-ms-overflow-style": "none" /* For Internet Explorer/Edge */,
+          overflowX: "auto" /* For Internet Explorer/Edge */,
         }}
         className="hide-scrollbar"
       >
@@ -204,6 +206,7 @@ function Home() {
             justifyContent: "stretch",
             display: "flex",
             flexDirection: "row",
+            gap: "12px",
           }}
         >
           {items.map((item) => ItemCard(item))}
@@ -226,7 +229,7 @@ function Home() {
         style={{
           width: "100%",
           overflowX: "auto", // This will make the row scrollable horizontally
-          "-ms-overflow-style": "none" /* For Internet Explorer/Edge */,
+          /* For Internet Explorer/Edge */
         }}
         className="hide-scrollbar"
       >
@@ -235,6 +238,7 @@ function Home() {
             justifyContent: "stretch",
             display: "flex",
             flexDirection: "row",
+            gap: "12px",
           }}
         >
           {items.map((item) => ItemCard(item))}
@@ -313,7 +317,7 @@ function Home() {
         style={{
           width: "100%",
           overflowX: "auto", // This will make the row scrollable horizontally
-          "-ms-overflow-style": "none" /* For Internet Explorer/Edge */,
+          /* For Internet Explorer/Edge */
         }}
         className="hide-scrollbar"
       >
@@ -322,6 +326,7 @@ function Home() {
             justifyContent: "stretch",
             display: "flex",
             flexDirection: "row",
+            gap: "12px",
           }}
         >
           {items.map((item) => ItemCard(item))}
@@ -344,7 +349,7 @@ function Home() {
         style={{
           width: "100%",
           overflowX: "auto", // This will make the row scrollable horizontally
-          "-ms-overflow-style": "none" /* For Internet Explorer/Edge */,
+          /* For Internet Explorer/Edge */
         }}
         className="hide-scrollbar"
       >
@@ -353,6 +358,7 @@ function Home() {
             justifyContent: "stretch",
             display: "flex",
             flexDirection: "row",
+            gap: "12px",
           }}
         >
           {items.map((item) => ItemCard(item))}
